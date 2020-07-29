@@ -6,19 +6,19 @@ import java.io.InputStream;
 
 public interface ParseStrategy {
 
-    String getName();
+  String getName();
 
-    void execute(InputStream in);
+  void execute(InputStream in);
 
-    default String getSentence(InputStream in) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int code;
-        while ((code = in.read()) != -1) {
-            sb.append((char) code);
-            if (code == '.') {
-                break;
-            }
-        }
-        return sb.toString();
+  default String getSentence(InputStream in) throws IOException {
+    StringBuilder sb = new StringBuilder();
+    int code;
+    while ((code = in.read()) != -1) {
+      sb.append((char) code);
+      if (code == '.') {
+        break;
+      }
     }
+    return sb.toString();
+  }
 }
